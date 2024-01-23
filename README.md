@@ -7,10 +7,11 @@ Text Cleaning: Data preparation involves cleaning the text to improve model perf
 (to do): Inference: After training, the model can be used for emotion classification on new input text. The inference is performed by another program (predictor.py), which loads the trained weights and predicts the emotional tone of a provided text.
 
 Solutions Used
+
 Pre-trained Language Model (LLM): The project utilizes BERT (Bidirectional Encoder Representations from Transformers) as the underlying LLM for understanding contextual relationships in text.
 
 PyTorch: The deep learning framework PyTorch is employed for building, training, and deploying the emotion classification model.
 
 Hugging Face Transformers: This library is used for working with pre-trained language models, including BERT, and simplifies the fine-tuning process.
 
-Text Cleaning: The TextCleaner class in TextCleaner.py is a custom solution for preparing textual data by applying various cleaning operations.
+Text Cleaning: The TextCleaner class in TextCleaner.py is a custom solution for preparing textual data by applying various cleaning operations it mostly utilizes solutions provided by nltk library, class TextCleaner is designed to wor on specific data frame (one with column named 'sentence').
