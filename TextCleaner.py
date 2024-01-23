@@ -13,7 +13,7 @@ data = [line.strip().split(';') for line in data]
 df_train = pd.DataFrame(data, columns=['sentence', 'label'])
 
 
-class TextMaid():
+class TextCleaner():
     def __init__(self, df_input):
         self.cleaned_text = self.for_df(df_input)
 
@@ -55,4 +55,4 @@ class TextMaid():
 
 if __name__ == '__main__':
     print(df_train.head())
-    print(TextMaid(df_train).cleaned_text.head())
+    print(TextCleaner(df_train).cleaned_text.head())

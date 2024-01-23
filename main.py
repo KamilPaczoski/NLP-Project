@@ -8,7 +8,7 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.metrics import classification_report
-from TextCleaner import TextMaid
+from TextCleaner import TextCleaner
 
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -20,7 +20,7 @@ with open('train.txt', 'r') as file:
     data = file.readlines()
 data = [line.strip().split(';') for line in data]
 df_train = pd.DataFrame(data, columns=['sentence', 'label'])
-df_train = TextMaid(df_train).cleaned_text
+df_train = TextCleaner(df_train).cleaned_text
 
 train_text = df_train['sentence']
 train_labels = df_train['label']
@@ -29,7 +29,7 @@ with open('test.txt', 'r') as file:
     data = file.readlines()
 data = [line.strip().split(';') for line in data]
 df_test = pd.DataFrame(data, columns=['sentence', 'label'])
-df_test = TextMaid(df_test).cleaned_text
+df_test = TextCleaner(df_test).cleaned_text
 
 test_text = df_test['sentence']
 test_labels = df_test['label']
@@ -38,7 +38,7 @@ with open('val.txt', 'r') as file:
     data = file.readlines()
 data = [line.strip().split(';') for line in data]
 df_val = pd.DataFrame(data, columns=['sentence', 'label'])
-df_val = TextMaid(df_val).cleaned_text
+df_val = TextCleaner(df_val).cleaned_text
 
 val_text = df_val['sentence']
 val_labels = df_val['label']
