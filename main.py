@@ -97,13 +97,12 @@ for param in bert.parameters():
 
 class BERT_layers(nn.Module):
 
-    def __init__(self, bert):
+    def __init__(self, bert):       #layers of the model
         super(BERT_layers, self).__init__()
-
         self.bert = bert
-        self.dropout = nn.Dropout(0.2)
+        self.dropout = nn.Dropout(0.2) #dropout layer
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(768, 256)
+        self.fc1 = nn.Linear(768, 256) #must be divisible by 6
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 6)
         self.softmax = nn.LogSoftmax(dim=1)
@@ -122,7 +121,7 @@ class BERT_layers(nn.Module):
 
 model = BERT_layers(bert)
 model = model.to(device)
-optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)  # learning rate
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-5)  # learning rate and other hyperparameters
 class_weights = compute_class_weight(class_weight="balanced",
                                      classes=np.unique(train_labels),
                                      y=train_labels
@@ -160,8 +159,6 @@ def evaluate():
     total_loss, total_accuracy = 0, 0
     total_preds = []
     for step, batch in enumerate(val_dataloader):
-
-        # Progress update every 50 batches.
         if step % 50 == 0 and not step == 0:
             print('  Batch {:>5,}  of  {:>5,}.'.format(step, len(val_dataloader)))
         batch = [t.to(device) for t in batch]
