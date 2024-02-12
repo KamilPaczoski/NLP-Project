@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>You entered: {{ sentence }}</p>
+    <p>Predicted emotion: {{ emotion }}</p>
+
+    <form action="/feedback" method="POST">
+        <input type="hidden" name="sentence" value="{{ sentence }}">
+        <input type="hidden" name="guessed_emotion" value="{{ emotion }}">
+        <label for="user_emotion">Was the predicted emotion correct?</label><br>
+        <input type="radio" id="correct" name="user_emotion" value="correct">
+        <label for="correct">Correct</label><br>
+        <input type="radio" id="incorrect" name="user_emotion" value="incorrect">
+        <label for="incorrect">Incorrect (select correct emotion below)</label><br>
+        <select id="correct_emotion" name="correct_emotion">
+            <option value="sadness">Sadness</option>
+            <option value="anger">Anger</option>
+            <option value="love">Love</option>
+            <option value="surprise">Surprise</option>
+            <option value="fear">Fear</option>
+            <option value="joy">Joy</option>
+        </select><br>
+        <input type="submit" value="Submit feedback">
+    </form>
+</body>
+</html>

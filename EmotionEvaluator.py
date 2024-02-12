@@ -3,7 +3,7 @@ import numpy as np
 from transformers import AutoModel, BertTokenizerFast
 from torch.utils.data import TensorDataset, DataLoader
 from TextCleaner import TextCleaner
-from main import BERT_layers, tokenizer, bert, device, train_labels
+from main import BERT_layers, tokenizer, bert, device, train_labels, label_encoder
 
 model = BERT_layers(bert)
 model = model.to(device)
@@ -40,7 +40,6 @@ def main():
             print("Exiting...")
             break
         emotion_class = classify_emotion(user_input)
-
         print("Predicted emotion class:", emotion_class, type(emotion_class))
         print("Predicted emotion type:", labels[emotion_class], labels)
 
@@ -52,3 +51,4 @@ def evaluator(text):
 
 if __name__ == "__main__":
     main()
+

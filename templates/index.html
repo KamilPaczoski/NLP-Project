@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detector</title>
+</head>
+<body>
+    <h1>Emotion Detector</h1>
+    <form method="POST">
+        <label for="sentence">Enter a sentence:</label><br>
+        <input type="text" id="sentence" name="sentence" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if updated %}
+        <p>The model has been updated.</p>
+    {% endif %}
+    <form action="/update_model" method="POST">
+        <input type="submit" value="Update Model">
+    </form>
+
+</body>
+</html>

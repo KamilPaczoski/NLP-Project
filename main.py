@@ -142,8 +142,9 @@ def evaluate():
     total_preds = np.concatenate(total_preds, axis=0)
     return avg_loss, total_preds
 
-#sequence_lengths = [len(sequence) for sequence in df_train['sentence'].tolist()]
-#average_length = sum(sequence_lengths) / len(sequence_lengths) # to get the average length of the sequences ergo padding length
+
+# sequence_lengths = [len(sequence) for sequence in df_train['sentence'].tolist()]
+# average_length = sum(sequence_lengths) / len(sequence_lengths) # to get the average length of the sequences ergo padding length
 
 if __name__ == "__main__":
     best_valid_loss = float('inf')
