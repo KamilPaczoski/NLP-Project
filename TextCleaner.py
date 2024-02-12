@@ -14,8 +14,11 @@ df_train = pd.DataFrame(data, columns=['sentence', 'label'])
 
 
 class TextCleaner():
-    def __init__(self, df_input):
-        self.cleaned_text = self.for_df(df_input)
+    def __init__(self, input):
+        if isinstance(input, pd.DataFrame):
+            self.cleaned_text = self.for_df(input)
+        elif isinstance(input, str):
+            self.cleaned_text = self.text_cleaning(input)
 
     def remove_numbers(self, text):
         text = ''.join([i for i in text if not i.isdigit()])

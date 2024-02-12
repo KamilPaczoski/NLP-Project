@@ -4,7 +4,7 @@ Training: The main program (main.py) allows the fine-tuning of a BERT model on a
 
 Text Cleaning: Data preparation involves cleaning the text to improve model performance. The TextCleaner class in TextCleaner.py provides text cleaning functionalities, including removing special characters, lowercase conversion, and other pre-processing steps.
 
-(to do): Inference: After training, the model can be used for emotion classification on new input text. The inference is performed by another program (predictor.py), which loads the trained weights and predicts the emotional tone of a provided text.
+Inference: After training, the model can be used for emotion classification on new input text. The inference is performed by another program (EmotionEvaluator.py), which loads the trained weights and predicts the emotional tone of a provided text.
 
 Solutions Used
 

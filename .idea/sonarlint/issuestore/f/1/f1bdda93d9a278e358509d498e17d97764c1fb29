@@ -1,4 +1,4 @@
 
-ˆpython:S101b"eRename class "BERT_layers" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(€é×úøÿÿÿÿ8ÎžÉ‚Ó1
-]python:S1481 "8Replace unused local variable "total_accuracy" with "_".(½¤éÂøÿÿÿÿ8ûƒÓ‚Ó1
-Npython:S1940¥")Use the opposite operator ("!=") instead.(—ÛãÕúÿÿÿÿ8¤˜œÓ1
+ˆpython:S101G"eRename class "BERT_layers" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(€é×úøÿÿÿÿ8‰š ÞÙ1
+Npython:S1940ƒ")Use the opposite operator ("!=") instead.(—ÛãÕúÿÿÿÿ8Šš ÞÙ1
+>python:S125‘"Remove this commented out code.(­Ž¢Ó8Ñ…ÓÞÙ1
