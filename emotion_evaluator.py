@@ -2,8 +2,8 @@ import torch
 import numpy as np
 from transformers import AutoModel, BertTokenizerFast
 from torch.utils.data import TensorDataset, DataLoader
-from TextCleaner import TextCleaner
-from main import BERT_layers, tokenizer, bert, device, train_labels, label_encoder
+from text_cleaner import TextCleaner
+from initialize import BERT_layers, tokenizer, bert, device, train_labels, label_encoder
 
 model = BERT_layers(bert)
 model = model.to(device)

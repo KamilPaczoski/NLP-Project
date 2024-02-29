@@ -1,5 +1,5 @@
 import torch
-from EmotionEvaluator import BERT_layers, tokenizer, bert, device
+from emotion_evaluator import BERT_layers, tokenizer, bert, device
 from torch.utils.data import DataLoader, TensorDataset
 
 model = BERT_layers(bert).to(device)
@@ -32,7 +32,7 @@ def fine_tune_model(sentences, emotions):
 
 def update_model():
     emotion_to_int = {'sadness': 0, 'anger': 1, 'love': 2, 'surprise': 3, 'fear': 4, 'joy': 5}
-    with open("feedback.txt", 'r') as file:
+    with open("datasets/feedback.txt", 'r') as file:
         sentences, emotions = zip(*[line.strip().split(';') for line in file])
     fine_tune_model(list(sentences), [emotion_to_int[e] for e in emotions])
     torch.save(model.state_dict(), 'saved_weights.pt')

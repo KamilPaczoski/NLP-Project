@@ -1,13 +1,9 @@
-import torch
-from transformers import pipeline, AutoTokenizer, DataCollatorWithPadding, TFAutoModelForSequenceClassification
+from string import punctuation
 import pandas as pd
-from datasets import load_dataset
-from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-import string
 
-with open('train.txt', 'r') as file:
+with open('datasets/train.txt', 'r') as file:
     data = file.readlines()
 data = [line.strip().split(';') for line in data]
 df_train = pd.DataFrame(data, columns=['sentence', 'label'])
@@ -25,7 +21,7 @@ class TextCleaner():
         return text
 
     def remove_punctuation(self, text):
-        text = ''.join([i for i in text if i not in frozenset(string.punctuation)])
+        text = ''.join([i for i in text if i not in frozenset(punctuation)])
         return text
 
     def remove_whitespace(self, text):

@@ -1,0 +1,7 @@
+torch~=2.1.2+cu121
+Flask~=3.0.2
+pandas~=2.2.0
+numpy~=1.26.3
+transformers~=4.36.2
+scikit-learn~=1.4.0
+nltk~=3.8.1

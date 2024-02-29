@@ -7,10 +7,10 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils.class_weight import compute_class_weight
 from sklearn.metrics import classification_report
-from TextCleaner import TextCleaner
+from text_cleaner import TextCleaner
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-epochs = 12
+epochs = 40
 batch_size = 64
 pad_len = 60
 
@@ -24,9 +24,9 @@ def load_data(file_name):
     return df['sentence'], df['label']
 
 
-train_text, train_labels = load_data('train.txt')
-test_text, test_labels = load_data('test.txt')
-val_text, val_labels = load_data('val.txt')
+train_text, train_labels = load_data('datasets/train.txt')
+test_text, test_labels = load_data('datasets/test.txt')
+val_text, val_labels = load_data('datasets/val.txt')
 
 bert = AutoModel.from_pretrained('bert-base-uncased')
 tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased')
@@ -128,7 +128,7 @@ def evaluate():
     model.eval()
     total_loss, total_preds = 0, []
     for step, batch in enumerate(val_dataloader):
-        if step % 50 == 0 and not step == 0:
+        if step % 50 == 0 and step != 0:
             print('Batch {:>5,} of {:>5,}.'.format(step, len(val_dataloader)))
         batch = [t.to(device) for t in batch]
         sent_id, mask, labels = batch

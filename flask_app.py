@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
-from EmotionEvaluator import classify_emotion, labels
-from fineTune import update_model
-import os
+from emotion_evaluator import classify_emotion, labels
+from fine_tune import update_model
 
 app = Flask(__name__)
 
@@ -21,7 +20,7 @@ def feedback():
     guessed_emotion = request.form['guessed_emotion']
     user_emotion = request.form['user_emotion']
     correct_emotion = request.form['correct_emotion']
-    feedback_file = 'feedback.txt'
+    feedback_file = 'datasets/feedback.txt'
     with open(feedback_file, 'a') as f:
         if user_emotion == 'correct':
             f.write(f"{user_input};{guessed_emotion}\n")
